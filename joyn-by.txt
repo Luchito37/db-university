@@ -24,3 +24,10 @@ RISPOSTE :
 2 = SELECT COUNT(`departments`.`id`) FROM `departments` JOIN `degrees` ON `departments`.`id` = `degrees`.`department_id` WHERE `departments`.`name` = 'Dipartimento di Neuroscienze' AND `degrees`.`level` = 'magistrale';
 
 3 = SELECT COUNT(`id`) AS 'N.-Corsi-tenuti-da-Fulvio-Amato' FROM `teachers` JOIN `course_teacher` ON `teachers`.`id` = `course_teacher`.`teacher_id` WHERE `teachers`.`id` = '44';
+
+4 = SELECT students.surname AS cognome, students.name AS nome, degrees.name AS corso_di_laurea, departments.name FROM students JOIN degrees ON degrees.id=students.degree_id JOIN departments ON departments.id = degrees.department_id ORDER BY students.surname, students.name ASC;
+
+5 = SELECT degrees.name, courses.name, teachers.name, teachers.surname FROM course_teacher JOIN courses ON courses.id= course_teacher.course_id JOIN teachers ON teachers.id = course_teacher.teacher_id JOIN degrees ON degrees.id=courses.degree_id;
+
+6 = SELECT DISTINCT teachers.name, teachers.surname, departments.name FROM teachers JOIN course_teacher ON course_teacher.teacher_id=teachers.id JOIN courses ON courses.id= course_teacher.course_id JOIN degrees ON degrees.id=courses.degree_id JOIN departments ON departments.id=degrees.department_id WHERE departments.name = "dipartimento di matematica";
+
